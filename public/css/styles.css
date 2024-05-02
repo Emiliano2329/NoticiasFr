@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los contenedores y tarjetas de noticias */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilos para la versión resumida de la tarjeta */
+.news-card {
+    margin: 50px 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 300px; /* Tamaño inicial de la tarjeta */
+}
+
+.news-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.news-card h2 {
+    margin-top: 0;
+}
+
+.news-card p {
+    margin-bottom: 10px;
+}
+
+#logo img {
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen */
+    height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+    border-radius: 200px;
+}
+
+/* Estilos para la versión expandida de la tarjeta */
+.news-card.fullscreen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto; /* Permite que la tarjeta ajuste su ancho */
+    max-width: 600px; /* Máximo ancho de la tarjeta expandida */
+    height: auto;
+    max-height: 80vh; /* Máximo altura de la tarjeta expandida */
+    overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    padding: 20px;
+    z-index: 1041; /* Asegura que la tarjeta esté sobre el fondo oscuro */
+    border-radius: 10px;
+}
+
+/* Fondo oscuro cuando una tarjeta está expandida */
+.container.darken {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 1040; /* Asegurarse que está detrás de la tarjeta expandida */
+}
+
+/* Estilo adicional para ocultar todas las tarjetas excepto la activa */
+.container.hide-others .news-card {
+    visibility: hidden; /* Oculta todas las tarjetas */
+}
+
+.container .news-card.fullscreen {
+    visibility: visible; /* Asegura que la tarjeta expandida sea visible */
+}
+
+/* Estilo adicional para ocultar elementos con la clase 'hidden' */
+.hidden {
+    display: none;
+}
+
+.news-card img {
+    max-height: 40%; /* Ajusta el máximo tamaño de la imagen */
+}
+
+.news-card .more-btn {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.news-card .more-btn:hover {
+    background-color: #0056b3;
+}
+
+.container.fullscreen #logo {
+    display: none; /* Oculta el logo cuando se muestra una tarjeta en pantalla completa */
+}
