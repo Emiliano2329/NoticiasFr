@@ -27,6 +27,8 @@ body {
   font-family: "Lora", serif;
 }
 
+
+
 h1 {
   font-weight:bolder;
   font-size: 4rem;
@@ -96,6 +98,7 @@ main {
     background-image: var(--background-main-image);
     background-position: center;
     background-size: cover;
+
 }
 
 .contenedor {
@@ -110,6 +113,7 @@ main {
     /* background-color: red; */
     /* border-style: groove;
     border-color: black; */
+
 }
 
 /* Estilos para la versión resumida de la tarjeta */
@@ -118,12 +122,14 @@ main {
     /* position: absolute; */
     /* background-color: red; */
     position: relative;
+   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     width: 95%;
+   
     /* max-width: 95%; */
     padding: 2em 0;
     /* background: #323652; */
@@ -135,6 +141,8 @@ main {
 
     background-image: var(--background-card);
     background-size: cover;
+
+    /* display: none; */
     
 }
 .news-card::before, .news-card::after {
@@ -205,6 +213,7 @@ main {
     max-height: 0;
     transform: translateY(1em);
     transition: all 0.55s ease;
+    height: auto;
   }
   
 
@@ -250,6 +259,7 @@ main {
     transform: none;
     overflow: hidden;
   }
+
 
  
 /* Estilos para el botón de agregar noticia */

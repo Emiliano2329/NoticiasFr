@@ -32,12 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 container.appendChild(container_card);
 
 
-                const btn = card.querySelector('#show-more');
+
+                const btn = card.querySelector('.button');
                 const hoverDescription = card.querySelector('.hover_description');
                 let band = 0;
                 btn.addEventListener('click', function () {
+                    const elementosContenedor = container.querySelectorAll('.contenedor');
+                    const ContenedorPrincipal = document.querySelector('.contenedor-principal');
 
-                    console.log("Hola mi pana");
+                    // Obtén el contenedor padre del botón presionado
+                    const contenedorPadreBoton = btn.closest('.contenedor');
 
                     // Toggle (agregar o quitar) los estilos CSS directamente
                     if (band == 1) {
@@ -45,36 +49,53 @@ document.addEventListener('DOMContentLoaded', function () {
                         hoverDescription.style.transform = 'translateY(1em)';
                         // hoverDescription.style.overflow = 'hidden';
                         console.log("pan");
+
+                        elementosContenedor.forEach(elemento => {
+                            //elemento.classList.toggle('hidden');
+                            elemento.style.display = 'flex';
+                           
+                            elemento.style.width = '40rem';
+                            elemento.style.height = '50rem';
+                            elemento.style.margin = '3rem';
+                            elemento.style.padding = '1rem';
+
+                        });
+
+                        container.style.height = 'auto';
+
                         band = 0;
                     } else {
-                        hoverDescription.style.maxHeight = '10em';
+
+                        elementosContenedor.forEach(elemento => {
+                            //elemento.classList.toggle('hidden');
+                            if (elemento !== contenedorPadreBoton) {
+                                elemento.style.display = 'none';
+                            } else {
+                              
+                                elemento.style.width = '120rem';
+                                elemento.style.height = '100rem';
+                               
+                            }
+                        });
+
+                  
+                        container.style.height = '120rem';
+
+                        hoverDescription.style.maxHeight = '90rem';
                         hoverDescription.style.transform = 'none';
                         // hoverDescription.style.overflow = 'visible';
                         console.log("no pan");
+
+
+
+
+
                         band = 1;
                     }
-                    // //     const fullContent = card.querySelector('.full-content');
-                    // //     const summary = card.querySelector('.summary');
 
-                    // //     if (fullContent.classList.contains('hidden')) {
-                    // //         // Expandir la tarjeta a pantalla completa
-                    // //         card.classList.add('fullscreen');
-                    // //         container.classList.add('darken');
-                    // //         container.classList.add('hide-others');
-                    // //         fullContent.classList.remove('hidden');
-                    // //         summary.classList.add('hidden');
-                    // //         btn.textContent = 'Ver menos';
-                    // //     } else {
-                    // //         // Revertir los cambios cuando se hace clic en "Ver menos"
-                    // //         card.classList.remove('fullscreen');
-                    // //         container.classList.remove('darken');
-                    // //         container.classList.remove('hide-others');
-                    // //         fullContent.classList.add('hidden');
-                    // //         summary.classList.remove('hidden');
-                    // //         btn.textContent = 'Ver más';
-                    // //     }
                 });
             });
         })
         .catch(error => console.error('Error fetching news:', error));
 });
+
