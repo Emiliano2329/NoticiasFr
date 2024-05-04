@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const btn = card.querySelector('.button');
                 const hoverDescription = card.querySelector('.hover_description');
+
+                const buttonText = btn.querySelector('.button_text'); // Seleccionar el elemento <span> con la clase button_text
+
+
                 let band = 0;
                 btn.addEventListener('click', function () {
                     const elementosContenedor = container.querySelectorAll('.contenedor');
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Obtén el contenedor padre del botón presionado
                     const contenedorPadreBoton = btn.closest('.contenedor');
+                    
 
                     // Toggle (agregar o quitar) los estilos CSS directamente
                     if (band == 1) {
@@ -62,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         });
 
                         container.style.height = 'auto';
+
+                        buttonText.textContent = 'Ver más'; 
 
                         band = 0;
                     } else {
@@ -86,7 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         // hoverDescription.style.overflow = 'visible';
                         console.log("no pan");
 
+                        
 
+                        buttonText.textContent = 'Ver menos'; 
 
 
 
