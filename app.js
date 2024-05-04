@@ -4,7 +4,9 @@ const multer = require('multer');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = 3221;
+
+
 
 // Configuración de Multer para cargar imágenes
 const storage = multer.diskStorage({
@@ -60,6 +62,7 @@ app.get('/api/news/:id', (req, res) => {
             res.status(500).json({ error: err.message });
             return;
         }
+        
         res.json(row);
     });
 });
