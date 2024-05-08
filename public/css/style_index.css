@@ -1,86 +1,106 @@
 :root {
-    --background-image: url("https://images.unsplash.com/photo-1624269305548-1527ef905ff6?q=80&w=3342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    --background-main-image: url("https://images.unsplash.com/photo-1611159063981-b8c8c4301869?q=80&w=3265&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    --background-card: url("https://images.unsplash.com/photo-1616410731303-6affae095a0a?q=80&w=3225&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    --background-body: url("https://images.unsplash.com/photo-1586024844218-3fb8999ef6cf?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  }
+  --background-image: url("https://images.unsplash.com/photo-1624269305548-1527ef905ff6?q=80&w=3342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  --background-main-image: url("https://images.unsplash.com/photo-1611159063981-b8c8c4301869?q=80&w=3265&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  --background-card: url("https://images.unsplash.com/photo-1616410731303-6affae095a0a?q=80&w=3225&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  --background-body: url("https://images.unsplash.com/photo-1586024844218-3fb8999ef6cf?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+  --backgroundColor-contenedor: #2b4c7e;
+
+  --backgroundColor-card: #606d80;
+
+  --backgroundColor-body: #dce0e6;
+
+  --color-font: #dce0e6;
+
+  --color-barraCarga: #dce0e6;
+
+  --color-fondo-barraCarga: #567ebb;
+
+  --color-texto-grande: #dce0e6;
+}
 
 /*  Globales **/
 html {
-    font-size: 62.5%;
-    box-sizing: border-box;
-    /* Hack para Box Model **/
-    scroll-snap-type: y mandatory;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 62.5%;
+  box-sizing: border-box;
+  /* Hack para Box Model **/
+  scroll-snap-type: y mandatory;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
-    font-size: 16px;
-    /* 1rem = 10px */
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-  
-  background-color:rgb(255, 255, 240);
+  font-size: 16px;
+  /* 1rem = 10px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(255, 255, 240);
   font-family: "Lora", serif;
 
-  background-image: var(--background-body);
+  background-color: var(--backgroundColor-body);
+
+  /* background-image: var(--background-body);
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 
 
 h1 {
-  font-weight:bolder;
+  font-weight: bolder;
   font-size: 4rem;
 }
 
 .contenedor-principal {
-/* background-color: red; */
-/* background-image: var(--background-image);
+  /* background-color: red; */
+  /* background-image: var(--background-image);
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
 background-attachment: fixed; */
-width: 90%;
+  width: 90%;
 }
 
 header {
-    /* background-color: #e64066; */
-    
+  /* background-color: #e64066; */
 
-    height: 20vh;
-    width: 100%;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 
-    background-image: var(--background-image);
+  height: 20vh;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: var(--backgroundColor-contenedor);
+
+  color: var(--color-texto-grande);
+
+  /* background-image: var(--background-image);
     background-size: cover;
     background-position: top;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat; */
+
 
 }
 
 .contenedor-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: beige; */
-    width: calc(100%/3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: beige; */
+  width: calc(100%/3);
 }
 
 header div img {
-    /* border-radius: 20px; */
-    width: 45%;
+  /* border-radius: 20px; */
+  width: 45%;
 }
 
 main .contenedor .news-card img {
@@ -93,75 +113,84 @@ main .contenedor .news-card img {
   min-height: 45%; */
   width: 100%;
   /* height: 90%; */
-  height: auto; /* Altura automática para mantener la proporción */
+  height: auto;
+  /* Altura automática para mantener la proporción */
   object-fit: contain;
- 
+
 
 }
 
 main {
-    /* background-color: #cc4d66; */
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-    background-image: var(--background-main-image);
+  /* background-color: #cc4d66; */
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+  /* background-image: var(--background-main-image);
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
+
+  background-color: var(--backgroundColor-contenedor);
+
+
 
 }
 
 .contenedor {
-    /* background-color: black; */
-    height: 50rem;
-    margin:3rem;
-    width: 40rem;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: red; */
-    /* border-style: groove;
+  /* background-color: black; */
+  height: 50rem;
+  margin: 3rem;
+  width: 40rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+  /* border-style: groove;
     border-color: black; */
 
 }
 
 /* Estilos para la versión resumida de la tarjeta */
 .news-card {
-    
-    /* position: absolute; */
-    /* background-color: red; */
-    position: relative;
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 95%;
-    height: 90%;
 
-   
-    /* max-width: 95%; */
-    padding: 2em 0;
-    /* background: #323652; */
-    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
-    transition: all 0.2s ease;
-    /* Tamaño inicial de la tarjeta */
-    box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
-    
+  /* position: absolute; */
+  /* background-color: red; */
+  position: relative;
 
-    background-image: var(--background-card);
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 95%;
+  height: 90%;
 
-    /* height: 80%; */
 
-    /* display: none; */
-    
-    
+  /* max-width: 95%; */
+  padding: 2em 0;
+  /* background: #323652; */
+  box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
+  transition: all 0.2s ease;
+  /* Tamaño inicial de la tarjeta */
+  -webkit-box-shadow: 0px 10px 16px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 16px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 16px -2px rgba(0, 0, 0, 0.75);
+  /* background-image: var(--background-card);
+    background-size: cover; */
+
+  background-color: var(--backgroundColor-card);
+
+
+
+  /* height: 80%; */
+
+  /* display: none; */
+
+
 }
 
 .news-card div:nth-child(1) {
@@ -172,10 +201,11 @@ main {
   align-items: center;
   justify-content: center;
   margin-bottom: 1rem;
-  overflow: hidden; /* Para recortar la imagen que exceda el tamaño del contenedor */
-  
-  
- 
+  overflow: hidden;
+  /* Para recortar la imagen que exceda el tamaño del contenedor */
+
+
+
   /* width: 50%;
   height: 50%;
   display: flex;
@@ -184,7 +214,8 @@ main {
 
 
 }
-.news-card div:nth-child(2){
+
+.news-card div:nth-child(2) {
   /* background-color: blue; */
   display: flex;
   align-items: center;
@@ -194,122 +225,127 @@ main {
   height: 50%; */
 }
 
-.news-card::before, .news-card::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #1D2173;
-    height: 4px;
-    
-  }
-  
-  .news-card::before {
-    width: 0;
-    opacity: 0;
-    transition: opacity 0 ease, width 0 ease;
-    transition-delay: 0.9s;
-  }
-  
-  .news-card::after {
-    width: 100%;
-    background: #C5CCD9;
-    transition: width 0.9s ease;
-  }
-  
-  .news-card .content {
-    width: 18em;
-    max-width: 80%;
-    
-  }
+.news-card::before,
+.news-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--color-barraCarga);
+  height: 4px;
 
-  .news-card .logo {
-    /* margin: 0 0 1em; */
-    /* width: 10.625em; */
-    transition: all 0.35s ease;
-    text-align: center;
-    color: Black; /* Color de los títulos de cada noticia */
-    font-weight: 900;
-    font-size:x-large;
-    margin: 0;
-  }
+}
 
+.news-card::before {
+  width: 0;
+  opacity: 0;
+  transition: opacity 0 ease, width 0 ease;
+  transition-delay: 0.9s;
+}
 
-  
-  .news-card .h6 {
-    color: black;  /* Color de los subtitulos de cada noticia */
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: justify;
+.news-card::after {
+  width: 100%;
+  background: var(--color-fondo-barraCarga);
+  transition: width 0.9s ease;
+}
 
-  }
-  
-  .news-card .hover_content {
-    overflow: hidden;
-    max-height: 0;
-    transform: translateY(1em);
-    transition: all 0.55s ease;
-  }
-  
-  .news-card .hover_description {
-    overflow: hidden;
-    max-height: 0;
-    transform: translateY(1em);
-    transition: all 0.55s ease;
-    height: auto;
-  }
-  
+.news-card .content {
+  width: 18em;
+  max-width: 80%;
 
-  .news-card .hover_content p {
-    /* margin: 1.5em 0 0; */
-    /* color: #6E6E70; */
-    line-height: 1.4em;
-    
-  }
-  
-  .news-card:hover {
-    width: 95%;
-    box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
-    overflow: hidden;
-    height: 100%;
+}
 
-   
-  }
-  
-  .news-card:hover::before {
-    width: 100%;
-    opacity: 1;
-    transition: opacity 0.5s ease, width 0.5s ease;
-    transition-delay: 0;
-    overflow: hidden;
-  }
-  
-  .news-card:hover::after {
-    width: 0;
-    opacity: 0;
-    transition: width 0 ease;
-    overflow: hidden;
-  }
-  
-  .news-card:hover .logo {
-    margin-bottom: 0.5em;
-    overflow: hidden;
-  }
-
-  .news-card:hover .h6 {
-    /* margin-bottom: 0.5em; */
-  }
-  
-  .news-card:hover .hover_content {
-    max-height: 10em;
-    transform: none;
-    overflow: hidden;
-  }
+.news-card .logo {
+  /* margin: 0 0 1em; */
+  /* width: 10.625em; */
+  transition: all 0.35s ease;
+  text-align: center;
+  color: var(--color-font);
+  /* Color de los títulos de cada noticia */
+  font-weight: 900;
+  font-size: x-large;
+  margin: 0;
+}
 
 
+
+.news-card .h6 {
+  color: var(--color-font);
+  /* Color de los subtitulos de cada noticia */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: justify;
  
+
+}
+
+.news-card .hover_content {
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(1em);
+  transition: all 0.55s ease;
+}
+
+.news-card .hover_description {
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(1em);
+  transition: all 0.55s ease;
+  height: auto;
+}
+
+
+.news-card .hover_content p {
+  /* margin: 1.5em 0 0; */
+  /* color: #6E6E70; */
+  line-height: 1.4em;
+
+}
+
+.news-card:hover {
+  width: 95%;
+  box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+  overflow: hidden;
+  height: 100%;
+
+
+}
+
+.news-card:hover::before {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease, width 0.5s ease;
+  transition-delay: 0;
+  overflow: hidden;
+}
+
+.news-card:hover::after {
+  width: 0;
+  opacity: 0;
+  transition: width 0 ease;
+  overflow: hidden;
+}
+
+.news-card:hover .logo {
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+.news-card:hover .h6 {
+  /* margin-bottom: 0.5em; */
+  padding: 0rem 2rem;
+}
+
+.news-card:hover .hover_content {
+  max-height: 10em;
+  transform: none;
+  overflow: hidden;
+}
+
+
+
 /* Estilos para el botón de agregar noticia */
 .button {
   -moz-appearance: none;
@@ -336,7 +372,7 @@ main {
   right: 0;
   left: 0;
   height: calc(50% - 5px);
-  border: 1px solid #7D8082;
+  border: 1px solid #b5e8c3;
   transition: all .15s ease;
 }
 
@@ -409,8 +445,8 @@ main {
   bottom: -1px;
   left: -8px;
   width: 0;
-  background-image: linear-gradient(to bottom right, #4cbcdc,
-  #040474);
+  background-image: linear-gradient(to bottom right, #dce0e6,
+      #567ebb);
   transform: skew(-15deg);
   transition: all .2s ease;
 }
@@ -434,32 +470,36 @@ main {
 
 /* Fin de estilos para el botón de agregar noticia */
 
-footer{
-    /* background-color: orange; */
-    height: 10vh;
-    width: 100%;
-    margin-top: 1rem;
+footer {
+  /* background-color: orange; */
+  height: 10vh;
+  width: 100%;
+  margin-top: 1rem;
 
-    background-image: var(--background-image);
+  /* background-image: var(--background-image);
     background-size: cover;
     background-position: bottom;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+  background-color: var(--backgroundColor-contenedor);
+
+  color: var(--color-texto-grande);
 
 
-    text-align: center;
-    display:  flex;
-    align-items: center;
-    justify-content: center;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 footer p {
   font-weight: bold;
   font-size: x-large;
+
 }
 
 
 .shadow {
-  -webkit-box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 20px -7px rgba(0, 0, 0, 0.75);
 }
