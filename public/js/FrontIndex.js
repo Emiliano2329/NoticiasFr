@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const card = document.createElement('div');
                 card.className = 'news-card';
                 card.innerHTML = `
+               <div>
                 <img src="${news.imageUrl}" alt="Imagen de la noticia">
+              </div>
+                <div>
                 <h2 class = "logo">${news.title}</h2>
                 <p class="hover_content h6">Fecha: ${news.newsDate}</p>
                 <p class="hover_content h6">${news.content.substring(0, 100)}...</p>
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span class="button_text">Ver más</span>
                     </span>
                 </button>
+               </div>
             `;
 
                 //<button class="more-btn">Ver más</button>          
@@ -37,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const hoverDescription = card.querySelector('.hover_description');
 
                 const buttonText = btn.querySelector('.button_text'); // Seleccionar el elemento <span> con la clase button_text
-
+                const image = card.querySelector('img');
 
                 let band = 0;
                 btn.addEventListener('click', function () {
@@ -66,9 +70,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         });
 
+                        
+
                         container.style.height = 'auto';
 
                         buttonText.textContent = 'Ver más'; 
+
+                        // image.style.maxHeight = "60%";
+                        // image.style.maxWidth = "60%";
 
                         band = 0;
                     } else {
@@ -96,6 +105,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         
 
                         buttonText.textContent = 'Ver menos'; 
+
+                        // image.style.backgroundColor = "blue";
+                        // image.style.maxHeight = "30%";
+                        // image.style.maxWidth = "30%";
 
 
 

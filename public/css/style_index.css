@@ -1,7 +1,8 @@
 :root {
     --background-image: url("https://images.unsplash.com/photo-1624269305548-1527ef905ff6?q=80&w=3342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    --background-main-image: url("https://images.unsplash.com/photo-1586488902367-b1ef9e974582?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    --background-main-image: url("https://images.unsplash.com/photo-1611159063981-b8c8c4301869?q=80&w=3265&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     --background-card: url("https://images.unsplash.com/photo-1616410731303-6affae095a0a?q=80&w=3225&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    --background-body: url("https://images.unsplash.com/photo-1586024844218-3fb8999ef6cf?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   }
 
 /*  Globales **/
@@ -25,6 +26,11 @@ body {
   
   background-color:rgb(255, 255, 240);
   font-family: "Lora", serif;
+
+  background-image: var(--background-body);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -73,17 +79,24 @@ header {
 }
 
 header div img {
-    border-radius: 20px;
-    width: 40%;
+    /* border-radius: 20px; */
+    width: 45%;
 }
 
 main .contenedor .news-card img {
   /* width: 30%; */
   /* height: 30%; */
   /* background-color: red; */
-  max-width: 50%;
+  /* max-width: 50%;
   max-height: 50%;
-  margin-bottom: 5rem;
+  min-width: 45%;
+  min-height: 45%; */
+  width: 100%;
+  /* height: 90%; */
+  height: auto; /* Altura automática para mantener la proporción */
+  object-fit: contain;
+ 
+
 }
 
 main {
@@ -102,11 +115,11 @@ main {
 }
 
 .contenedor {
-    /* background-color: peachpuff; */
+    /* background-color: black; */
     height: 50rem;
     margin:3rem;
     width: 40rem;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,12 +142,14 @@ main {
     align-items: center;
     cursor: pointer;
     width: 95%;
+    height: 90%;
+
    
     /* max-width: 95%; */
     padding: 2em 0;
     /* background: #323652; */
     box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
-    transition: all 1.5s ease;
+    transition: all 0.2s ease;
     /* Tamaño inicial de la tarjeta */
     box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
     
@@ -142,9 +157,43 @@ main {
     background-image: var(--background-card);
     background-size: cover;
 
+    /* height: 80%; */
+
     /* display: none; */
     
+    
 }
+
+.news-card div:nth-child(1) {
+  /* background-color: green; */
+  height: 25rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: hidden; /* Para recortar la imagen que exceda el tamaño del contenedor */
+  
+  
+ 
+  /* width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+
+
+}
+.news-card div:nth-child(2){
+  /* background-color: blue; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* width: 50%;
+  height: 50%; */
+}
+
 .news-card::before, .news-card::after {
     content: "";
     position: absolute;
@@ -186,11 +235,7 @@ main {
     margin: 0;
   }
 
-  .news-card img{
-    /* margin: 0 0 1em; */
-    /* margin: 0.5rem; */
-    
-  }
+
   
   .news-card .h6 {
     color: black;  /* Color de los subtitulos de cada noticia */
@@ -228,6 +273,9 @@ main {
     width: 95%;
     box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
     overflow: hidden;
+    height: 100%;
+
+   
   }
   
   .news-card:hover::before {
@@ -396,11 +444,22 @@ footer{
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
+
+
+    text-align: center;
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p {
+  font-weight: bold;
+  font-size: x-large;
 }
 
 
 .shadow {
-  -webkit-box-shadow: 0px 7px 17px -10px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 7px 17px -10px rgba(0,0,0,0.75);
-box-shadow: 0px 7px 17px -10px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 20px -7px rgba(0,0,0,0.75);
 }
