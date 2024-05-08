@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const card = document.createElement('div');
                 card.className = 'news-card';
                 card.innerHTML = `
-               <div>
+               <div class="image-container">
                 <img src="${news.imageUrl}" alt="Imagen de la noticia">
               </div>
                 <div>
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 btn.addEventListener('click', function () {
                     const elementosContenedor = container.querySelectorAll('.contenedor');
                     const ContenedorPrincipal = document.querySelector('.contenedor-principal');
+                    const imageContainer = card.querySelector('.image-container');
 
                     // Obtén el contenedor padre del botón presionado
                     const contenedorPadreBoton = btn.closest('.contenedor');
@@ -76,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         buttonText.textContent = 'Ver más'; 
 
-                        // image.style.maxHeight = "60%";
-                        // image.style.maxWidth = "60%";
+                        // image.style.maxHeight = "auto";
+                        // image.style.maxWidth = "100%";
 
                         band = 0;
                     } else {
@@ -109,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         // image.style.backgroundColor = "blue";
                         // image.style.maxHeight = "30%";
                         // image.style.maxWidth = "30%";
+
+                        imageContainer.style.height = '50%';
+                 
 
 
 

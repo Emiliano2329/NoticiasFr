@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const timeStamp = new Date().getTime();  // Genera un timestamp para la URL de la imagen
             newsItem.innerHTML = `
                 <h3>${news.title}</h3>
-                <img src="${news.imageUrl}?timestamp=${timeStamp}" alt="Noticia Imagen"> 
+               
                 <p>${news.content}</p>
                 <button id="edit-${news.id}">Editar</button>
                 <button id="delete-${news.id}">Borrar</button>

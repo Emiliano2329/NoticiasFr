@@ -6,7 +6,7 @@
 
   --backgroundColor-contenedor: #2b4c7e;
 
-  --backgroundColor-card: #606d80;
+  --backgroundColor-card: #6f8b94;
 
   --backgroundColor-body: #dce0e6;
 
@@ -202,6 +202,7 @@ main {
   justify-content: center;
   margin-bottom: 1rem;
   overflow: hidden;
+
   /* Para recortar la imagen que exceda el tamaño del contenedor */
 
 
