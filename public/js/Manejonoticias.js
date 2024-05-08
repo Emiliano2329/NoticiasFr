@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    /*
     function renderNewsList(newsListData) {
         newsList.innerHTML = '';
         newsListData.forEach(news => {
@@ -38,7 +39,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 deleteNews(news.id);
             });
         });
+    }*/
+
+
+    function renderNewsList(newsListData) {
+        newsList.innerHTML = '';  
+        newsListData.forEach(news => {
+            const newsItem = document.createElement('div');
+            const timeStamp = new Date().getTime();  // Genera un timestamp para la URL de la imagen
+            newsItem.innerHTML = `
+                <h3>${news.title}</h3>
+                <img src="${news.imageUrl}?timestamp=${timeStamp}" alt="Noticia Imagen"> 
+                <p>${news.content}</p>
+                <button id="edit-${news.id}">Editar</button>
+                <button id="delete-${news.id}">Borrar</button>
+            `;
+            newsList.appendChild(newsItem);
+    
+            document.getElementById(`edit-${news.id}`).addEventListener('click', function() {
+                editNews(news.id);
+            });
+    
+            document.getElementById(`delete-${news.id}`).addEventListener('click', function() {
+                deleteNews(news.id);
+            });
+        });
     }
+    
 
     function hideNewsList() {
         newsList.style.display = 'none';
@@ -101,17 +128,19 @@ document.addEventListener('DOMContentLoaded', function() {
         submitEdit();
     });
 
+    /*
     function submitEdit() {
         const id = editForm['edit-id'].value;
         const title = editForm['edit-title'].value;
         const content = editForm['edit-content'].value;
         const newsDate = editForm['edit-newsDate'].value;
-
+       
         const data = {
             title: title,
             content: content,
             body: editForm['edit-body'].value, 
             newsDate: newsDate,
+            
         };
 
         fetch(`/api/news/${id}`, {
@@ -131,7 +160,34 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
             alert('Hubo un error al actualizar la noticia.');
         });
+    }*/
+
+    function submitEdit() {
+        const id = editForm['edit-id'].value;
+        const formData = new FormData();
+        formData.append('title', editForm['edit-title'].value);
+        formData.append('content', editForm['edit-content'].value);
+        formData.append('body', editForm['edit-body'].value);
+        formData.append('newsDate', editForm['edit-newsDate'].value);
+        formData.append('newsImage', document.getElementById('edit-newsImage').files[0]);  
+    
+        fetch(`/api/news/update/${id}`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            editNewsForm.style.display = 'none';
+            showNewsAndLoad();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al actualizar la noticia.');
+        });
     }
+    
+    
 
     loadNews();
 });

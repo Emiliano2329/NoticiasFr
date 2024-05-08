@@ -95,6 +95,32 @@ app.put('/api/news/:id', (req, res) => {
     });
 });
 
+
+
+app.post('/api/news/update/:id', upload.single('newsImage'), (req, res) => {
+    const id = req.params.id;
+    const { title, content, body, newsDate } = req.body;
+    const imageUrl = req.file ? `/images/${req.file.filename}` : null;
+
+    let query = 'UPDATE news SET title = ?, content = ?, body = ?, newsDate = ?';
+    let params = [title, content, body, newsDate];
+    if (imageUrl) {
+        query += ', imageUrl = ?';
+        params.push(imageUrl);
+    }
+    query += ' WHERE id = ?';
+    params.push(id);
+
+    db.run(query, params, function(err) {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({ message: 'Noticia actualizada correctamente' });
+    });
+});
+
+
 // Borrar una noticia
 app.delete('/api/news/:id', (req, res) => {
     const { id } = req.params;
