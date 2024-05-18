@@ -35,93 +35,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 container.appendChild(container_card);
 
+            });
 
+            const btns = document.querySelectorAll("#show-more")  // Se adquiere a los botones de cada una de las tarjetas creadas
+            const hoverDescription = document.querySelector('.hover_description');  // Se adquiere la descripción de cada una de las tarjetas creadas
+            const containerCards = document.querySelectorAll('.contenedor');
 
-                const btn = card.querySelector('.button');
-                const hoverDescription = card.querySelector('.hover_description');
+            for (let button of btns) {
+                const buttonText = button.querySelector('.button_text');  // Se accede al texto del elemento button
+                const containerCard = button.closest('.contenedor');  // Se accede al contenedor de la tarjeta que se seleccione
+                const card = containerCard.querySelector('.news-card');  // Se accede al contenido de la tarjeta seleccionada
+                const hoverDescription = card.querySelector('.hover_description');  // Se accede a la descripción de la tarjeta seleccionada
 
-                const buttonText = btn.querySelector('.button_text'); // Seleccionar el elemento <span> con la clase button_text
-                const image = card.querySelector('img');
-
-                let band = 0;
-                btn.addEventListener('click', function () {
-                    const elementosContenedor = container.querySelectorAll('.contenedor');
-                    const ContenedorPrincipal = document.querySelector('.contenedor-principal');
-                    const imageContainer = card.querySelector('.image-container');
-
-                    // Obtén el contenedor padre del botón presionado
-                    const contenedorPadreBoton = btn.closest('.contenedor');
-                    
-
-                    // Toggle (agregar o quitar) los estilos CSS directamente
-                    if (band == 1) {
-                        hoverDescription.style.maxHeight = '0';
-                        hoverDescription.style.transform = 'translateY(1em)';
-                        // hoverDescription.style.overflow = 'hidden';
-                        console.log("pan");
-
-                        elementosContenedor.forEach(elemento => {
-                            //elemento.classList.toggle('hidden');
-                            elemento.style.display = 'flex';
-                           
-                            elemento.style.width = '40rem';
-                            elemento.style.height = '50rem';
-                            elemento.style.margin = '3rem';
-                            elemento.style.padding = '1rem';
-
-                        });
-
-                        
-
-                        container.style.height = 'auto';
-
-                        buttonText.textContent = 'Ver más'; 
-
-                        // image.style.maxHeight = "auto";
-                        // image.style.maxWidth = "100%";
-
-                        band = 0;
-                    } else {
-
-                        elementosContenedor.forEach(elemento => {
-                            //elemento.classList.toggle('hidden');
-                            if (elemento !== contenedorPadreBoton) {
-                                elemento.style.display = 'none';
-                            } else {
-                              
-                                elemento.style.width = '120rem';
-                                elemento.style.height = '100rem';
-                               
-                            }
-                        });
-
-                  
-                        container.style.height = '120rem';
-
-                        hoverDescription.style.maxHeight = '90rem';
-                        hoverDescription.style.transform = 'none';
-                        // hoverDescription.style.overflow = 'visible';
-                        console.log("no pan");
-
-                        
-
-                        buttonText.textContent = 'Ver menos'; 
-
-                        // image.style.backgroundColor = "blue";
-                        // image.style.maxHeight = "30%";
-                        // image.style.maxWidth = "30%";
-
-                        imageContainer.style.height = '50%';
+                button.addEventListener('click', () => {  // Se le agrega un evento a los elementos buttons
                  
+                    console.log(buttonText.textContent);
+                    if(buttonText.textContent === 'Ver más'){  // Si se selecciona una noticia
 
+                        buttonText.textContent = 'Ver menos';
 
-
-                        band = 1;
+                        for(let container of containerCards){
+                            if(container !== containerCard){
+                                container.style.display = 'none';
+                            }else{
+                                containerCard.classList.replace('contenedor', 'contenedor-alterado');
+                                hoverDescription.style.maxHeight = '70rem';
+                                hoverDescription.style.transform = 'none';
+                            }
+                        }
+                    }else{  // Si se desea volver a ver las demás noticias
+                        buttonText.textContent = 'Ver más';
+                        for(let container of containerCards){
+                            if(container !== containerCard){
+                                container.style.display = 'flex';
+                            }else{
+                                containerCard.classList.replace('contenedor-alterado', 'contenedor');
+                                hoverDescription.style.maxHeight = '0';
+                                hoverDescription.style.transform = 'translateY(1em)';
+                            }
+                        }
                     }
 
+         
+                    
+                    // Se imprime la descripción de la tarjeta
+                    //console.log(`Descripción: ${hoverDescription.textContent}`);
+
+                    
+                    
                 });
-            });
+            }
+
+
         })
         .catch(error => console.error('Error fetching news:', error));
+
 });
 
