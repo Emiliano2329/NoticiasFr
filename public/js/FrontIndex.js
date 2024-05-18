@@ -37,6 +37,106 @@ document.addEventListener('DOMContentLoaded', function () {
 
             });
 
+            // Para la funcionalidad de la barra de búsqueda
+            // const input = document.querySelector('.input');
+            // const searchResultsContainer = document.getElementById('searchResultsContainer');
+            // input.addEventListener('input', () => {
+            //     // Aquí puedes ejecutar cualquier acción que desees cada vez que se cambie el valor del input
+            //     const searchText = input.value.trim(); // Obtener el texto del input y eliminar espacios en blanco al principio y al final
+
+            //     // Llamar a una función de búsqueda o realizar otras operaciones según sea necesario
+            //     fetch(`/api/news`)
+            //         .then(response => response.json())
+            //         .then(data => {
+
+            //             // Limpiar los resultados anteriores
+            //             searchResultsContainer.innerHTML = '';
+
+            //             // Crear una lista para los resultados
+            //             const resultList = document.createElement('ul');
+
+            //             // Agregar cada resultado como un elemento de lista
+            //             data.forEach(news => {
+            //                 const resultItem = document.createElement('li');
+            //                 resultItem.textContent = news.title;
+            //                 resultList.appendChild(resultItem);
+            //             });
+
+            //             // Agregar la lista de resultados al contenedor
+            //             searchResultsContainer.appendChild(resultList);
+
+
+            //         })
+            //         .catch(error => console.error('Error fetching search results:', error)); // Imprime cualquier error que ocurra durante la solicitud al backend
+            // });
+
+            // Ocultar los resultados cuando se hace clic fuera de la barra de búsqueda
+            // document.addEventListener('click', (event) => {
+            //     if (!searchResultsContainer.contains(event.target)) {
+            //         searchResultsContainer.style.display = 'none';
+            //     }
+            // });
+
+
+
+
+
+
+
+            const searchBar = document.getElementById('search-bar');
+            const searchButton = document.getElementById('search-button');
+            const searchResults = document.getElementById('search-results');
+
+            const previousSearches = ['Alan', 'Anna', 'Andrea', 'Angie','Marco'];
+
+            searchBar.addEventListener('input', () => {
+                const query = searchBar.value.toLowerCase();
+                searchResults.innerHTML = '';
+
+                if (query) {
+                    const filteredResults = previousSearches.filter(item => item.toLowerCase().includes(query));
+                    if (filteredResults.length > 0) {
+                        searchResults.style.display = 'block';
+                        filteredResults.forEach(result => {
+                            const li = document.createElement('li');
+                            li.textContent = result;
+                            li.addEventListener('click', () => {
+                                searchBar.value = result;
+                                searchResults.style.display = 'none';
+                            });
+                            searchResults.appendChild(li);
+                        });
+                    } else {
+                        searchResults.style.display = 'none';
+                    }
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+            searchButton.addEventListener('click', () => {
+                alert('Buscar: ' + searchBar.value);
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!searchBar.contains(event.target) && !searchButton.contains(event.target) && !searchResults.contains(event.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Para la funcionalidad de las tarjetas de noticias
             const btns = document.querySelectorAll("#show-more")  // Se adquiere a los botones de cada una de las tarjetas creadas
             const hoverDescription = document.querySelector('.hover_description');  // Se adquiere la descripción de cada una de las tarjetas creadas
             const containerCards = document.querySelectorAll('.contenedor');
@@ -48,27 +148,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 const hoverDescription = card.querySelector('.hover_description');  // Se accede a la descripción de la tarjeta seleccionada
 
                 button.addEventListener('click', () => {  // Se le agrega un evento a los elementos buttons
-                 
+
                     console.log(buttonText.textContent);
-                    if(buttonText.textContent === 'Ver más'){  // Si se selecciona una noticia
+                    if (buttonText.textContent === 'Ver más') {  // Si se selecciona una noticia
 
                         buttonText.textContent = 'Ver menos';
 
-                        for(let container of containerCards){
-                            if(container !== containerCard){
+                        for (let container of containerCards) {
+                            if (container !== containerCard) {
                                 container.style.display = 'none';
-                            }else{
+                            } else {
                                 containerCard.classList.replace('contenedor', 'contenedor-alterado');
                                 hoverDescription.style.maxHeight = '70rem';
                                 hoverDescription.style.transform = 'none';
                             }
                         }
-                    }else{  // Si se desea volver a ver las demás noticias
+                    } else {  // Si se desea volver a ver las demás noticias
                         buttonText.textContent = 'Ver más';
-                        for(let container of containerCards){
-                            if(container !== containerCard){
+                        for (let container of containerCards) {
+                            if (container !== containerCard) {
                                 container.style.display = 'flex';
-                            }else{
+                            } else {
                                 containerCard.classList.replace('contenedor-alterado', 'contenedor');
                                 hoverDescription.style.maxHeight = '0';
                                 hoverDescription.style.transform = 'translateY(1em)';
@@ -76,13 +176,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
 
-         
-                    
-                    // Se imprime la descripción de la tarjeta
-                    //console.log(`Descripción: ${hoverDescription.textContent}`);
-
-                    
-                    
                 });
             }
 

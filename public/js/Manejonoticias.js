@@ -18,30 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    /*
-    function renderNewsList(newsListData) {
-        newsList.innerHTML = '';
-        newsListData.forEach(news => {
-            const newsItem = document.createElement('div');
-            newsItem.innerHTML = `
-                <h3>${news.title}</h3>
-                <p>${news.content}</p>
-                <button id="edit-${news.id}">Editar</button>
-                <button id="delete-${news.id}">Borrar</button>
-            `;
-            newsList.appendChild(newsItem);
-
-            document.getElementById(`edit-${news.id}`).addEventListener('click', function() {
-                editNews(news.id);
-            });
-
-            document.getElementById(`delete-${news.id}`).addEventListener('click', function() {
-                deleteNews(news.id);
-            });
-        });
-    }*/
-
-
+    
     function renderNewsList(newsListData) {
         newsList.innerHTML = '';  
         newsListData.forEach(news => {
@@ -128,39 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         submitEdit();
     });
 
-    /*
-    function submitEdit() {
-        const id = editForm['edit-id'].value;
-        const title = editForm['edit-title'].value;
-        const content = editForm['edit-content'].value;
-        const newsDate = editForm['edit-newsDate'].value;
-       
-        const data = {
-            title: title,
-            content: content,
-            body: editForm['edit-body'].value, 
-            newsDate: newsDate,
-            
-        };
-
-        fetch(`/api/news/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            editNewsForm.style.display = 'none';
-            showNewsAndLoad();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un error al actualizar la noticia.');
-        });
-    }*/
+    
 
     function submitEdit() {
         const id = editForm['edit-id'].value;
