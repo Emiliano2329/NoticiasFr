@@ -102,7 +102,7 @@ header {
 }
 
 #search-bar {
- 
+
   height: 100%;
   width: 80%;
   outline: none;
@@ -138,7 +138,7 @@ header {
   border-bottom-right-radius: 7px;
   height: 100%;
   width: 20%;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -216,7 +216,7 @@ main .contenedor-alterado .news-card img {
 }
 
 main {
-  /* background-color: #cc4d66; */
+
   height: auto;
   width: 100%;
   display: flex;
@@ -224,9 +224,7 @@ main {
   align-items: center;
   justify-content: center;
   margin: 2rem;
-  /* background-image: var(--background-main-image);
-    background-position: center;
-    background-size: cover; */
+
 
   background-color: var(--backgroundColor-contenedor);
 
@@ -243,11 +241,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: red; */
-  /* border-style: groove;
-    border-color: black; */
 
-  /* background-color: red; */
+  /* background-color: greenyellow; */
+
 
 }
 
@@ -616,3 +612,111 @@ footer .button {
   box-shadow: 0px 7px 25px -6px rgba(13, 13, 13, 1);
 }
 
+
+.control-buttons {
+
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+
+  /* background-color: red; */
+}
+
+/* Botónes para siguiente y después */
+/* -------------------------------------- */
+#after, #before {
+  display: block;
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+}
+
+#before:before,
+#before:after, #after:before,
+#after:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+}
+
+#before:before, #after:before {
+  border: 4px solid #f0eeef;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+#before:after, #after:after {
+  border: 4px solid #96daf0;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+/* No tocar */
+#before:hover:before,
+#before:focus:before, #after:hover:before,
+#after:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* no tocar */
+#before:hover:after,
+#before:focus:after, #after:hover:after,
+#after:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+#after .button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: -56px;
+}
+
+#before .button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.button-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #f0eeef;
+}
+
+
+#before:hover .button-box,
+#before:focus .button-box {
+  transition: 0.4s;
+  transform: translateX(-56px);
+}
+
+#after:hover .button-box,
+#after:focus .button-box {
+  transition: 0.4s;
+  transform: translateX(56px);
+}
+
+#after svg {
+  transform: rotate(180deg);
+}
