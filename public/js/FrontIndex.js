@@ -37,105 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             });
 
-            // Para la funcionalidad de la barra de búsqueda
-            // const input = document.querySelector('.input');
-            // const searchResultsContainer = document.getElementById('searchResultsContainer');
-            // input.addEventListener('input', () => {
-            //     // Aquí puedes ejecutar cualquier acción que desees cada vez que se cambie el valor del input
-            //     const searchText = input.value.trim(); // Obtener el texto del input y eliminar espacios en blanco al principio y al final
-
-            //     // Llamar a una función de búsqueda o realizar otras operaciones según sea necesario
-            //     fetch(`/api/news`)
-            //         .then(response => response.json())
-            //         .then(data => {
-
-            //             // Limpiar los resultados anteriores
-            //             searchResultsContainer.innerHTML = '';
-
-            //             // Crear una lista para los resultados
-            //             const resultList = document.createElement('ul');
-
-            //             // Agregar cada resultado como un elemento de lista
-            //             data.forEach(news => {
-            //                 const resultItem = document.createElement('li');
-            //                 resultItem.textContent = news.title;
-            //                 resultList.appendChild(resultItem);
-            //             });
-
-            //             // Agregar la lista de resultados al contenedor
-            //             searchResultsContainer.appendChild(resultList);
-
-
-            //         })
-            //         .catch(error => console.error('Error fetching search results:', error)); // Imprime cualquier error que ocurra durante la solicitud al backend
-            // });
-
-            // Ocultar los resultados cuando se hace clic fuera de la barra de búsqueda
-            // document.addEventListener('click', (event) => {
-            //     if (!searchResultsContainer.contains(event.target)) {
-            //         searchResultsContainer.style.display = 'none';
-            //     }
-            // });
-
-
-
-
-
-
-
-            const searchBar = document.getElementById('search-bar');
-            const searchButton = document.getElementById('search-button');
-            const searchResults = document.getElementById('search-results');
-
-            const previousSearches = ['Alan', 'Anna', 'Andrea', 'Angie','Marco'];
-
-            searchBar.addEventListener('input', () => {
-                const query = searchBar.value.toLowerCase();
-                searchResults.innerHTML = '';
-
-                if (query) {
-                    const filteredResults = previousSearches.filter(item => item.toLowerCase().includes(query));
-                    if (filteredResults.length > 0) {
-                        searchResults.style.display = 'block';
-                        filteredResults.forEach(result => {
-                            const li = document.createElement('li');
-                            li.textContent = result;
-                            li.addEventListener('click', () => {
-                                searchBar.value = result;
-                                searchResults.style.display = 'none';
-                            });
-                            searchResults.appendChild(li);
-                        });
-                    } else {
-                        searchResults.style.display = 'none';
-                    }
-                } else {
-                    searchResults.style.display = 'none';
-                }
-            });
-
-            searchButton.addEventListener('click', () => {
-                alert('Buscar: ' + searchBar.value);
-            });
-
-            document.addEventListener('click', (event) => {
-                if (!searchBar.contains(event.target) && !searchButton.contains(event.target) && !searchResults.contains(event.target)) {
-                    searchResults.style.display = 'none';
-                }
-            });
-
-
-
-
-
-
-
-
-
-
-
-
-
             // Para la funcionalidad de las tarjetas de noticias
             const btns = document.querySelectorAll("#show-more")  // Se adquiere a los botones de cada una de las tarjetas creadas
             const hoverDescription = document.querySelector('.hover_description');  // Se adquiere la descripción de cada una de las tarjetas creadas
@@ -179,9 +80,97 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
+            // Se seleccionan los elementos de la barra de búsqueda para poder modificarlos o adaptarlos
+            const searchBar = document.getElementById('search-bar');
+            const searchButton = document.getElementById('search-button');
+            const searchResults = document.getElementById('search-results');
+
+            const previousSearches = ['Alan', 'Anna', 'Andrea', 'Angie', 'Marco'];  // Borrar
+
+            searchBar.addEventListener('input',  async () => {
+                const query = searchBar.value.trim().toLowerCase();  // Se toma el contenido de la barra de búsqueda y se convierte a minúsculas todo
+                //console.log(findTitle(query));
+                searchResults.innerHTML = '';  // Se limpia la barra de búsqueda
+
+                if (query) {  // Si se tiene una cadena válida
+                    // Se buscan los resultados que contengan la cadena búscada
+                    //const filteredResults = previousSearches.filter(item => item.toLowerCase().includes(query));
+                    const filteredResults = await findTitle(query);
+                    console.log(`Resultado:`, filteredResults);
+
+
+                    if (filteredResults.length > 0) {  // Si se han encotrado coincidencias
+                        searchResults.style.display = 'block';  // Se ajusta el contenedor
+                        filteredResults.forEach(result => {  // Se recorre el arreglo de las coincidencias encontradas
+                            const li = document.createElement('li');
+                            li.textContent = result; // Se colocan todas las cadenas similares en el contenedor de resúltados
+                            li.addEventListener('click', () => {  // Si se selecciona una cadena
+                                searchBar.value = result;  // Se coloca en la barra de búsqueda
+                                searchResults.style.display = 'none';  // Se eliminan las demás
+                            });
+                            searchResults.appendChild(li);
+                        });
+                    } else {
+                        searchResults.style.display = 'none';
+                    }
+                } else {
+                    searchResults.style.display = 'none';
+                }
+
+
+
+
+            });
+
+            // Se añade un evento al elemento button para saber cuándo buscar algo
+            searchButton.addEventListener('click', () => {
+                alert('Buscar: ' + searchBar.value);
+            });
+
+            // Si se da click en un área fuera de la barrá de búsqueda o de las coincidencias encontradas
+            document.addEventListener('click', (event) => {
+                if (!searchBar.contains(event.target) && !searchButton.contains(event.target) && !searchResults.contains(event.target)) {
+                    searchResults.style.display = 'none';  // Se ocultan las coincidencias encontradas
+                }
+            });
+
+
+
+
+
 
         })
         .catch(error => console.error('Error fetching news:', error));
 
 });
+
+
+function hellow(name) {
+    console.log(`Hola ${name}!`);
+}
+
+function findTitle(str) {
+    return new Promise((resolve, reject) => {
+        let titles = [];
+
+        fetch(`/api/news`)
+            .then(response => response.json())
+            .then(data => {
+                for (let newTitle of Object.values(data)) {
+                    titles.push(newTitle.title);
+                }
+
+                let matches = titles.filter(item => item.toLowerCase().includes(str.toLowerCase()));
+
+                console.log('Coincidencias finales:', matches);
+
+                resolve(matches); // Resuelve la Promesa con las coincidencias encontradas
+            })
+            .catch(error => {
+                console.error('Error al buscar:', error);
+                reject(error); // Rechaza la Promesa con el error
+            });
+    });
+}
+
 
