@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <img src="${news.imageUrl}" alt="Imagen de la noticia">
               </div>
                 <div>
-                <h2 class = "logo">${news.title}</h2>
-                <p class="hover_content h6">Fecha: ${news.newsDate}</p>
-                <p class="hover_content h6">${news.content.substring(0, 100)}...</p>
+                <h2 class = "logo lato-regular-italic">${news.title}</h2>
+                <p class="hover_content h6 lato-regular">Fecha: ${news.newsDate}</p>
+                <p class="hover_content h6 lato-regular">${news.content.substring(0, 100)}...</p>
                 <p class="hover_description h6">${news.body}</p>
                 <button class="button" id="show-more">
                     <span class="button_lg">
